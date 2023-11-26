@@ -58,7 +58,6 @@ public class StartActivity extends AppCompatActivity {
                 if(!String.valueOf(inputText.getText()).equals("")){
                     outputView.setText(sqh.recordsMatchingCodeword(sqdb, String.valueOf(inputText.getText())));
                 }
-                //TODO seatching by codeword
             }
         });
     }
