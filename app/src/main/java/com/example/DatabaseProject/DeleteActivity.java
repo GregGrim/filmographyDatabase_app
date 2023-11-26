@@ -43,6 +43,7 @@ public class DeleteActivity extends AppCompatActivity {
                 sqh.deleteRecordByID(sqdb, Integer.parseInt(id));
                 errorText.setTextColor(Color.BLACK);
                 errorText.setText("Record has been deleted !");
+                inputID.setText("");
             }
         });
     }

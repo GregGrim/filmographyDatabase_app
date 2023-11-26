@@ -102,5 +102,29 @@ public class OpenDatabase extends SQLiteOpenHelper {
     public void deleteRecordByID(SQLiteDatabase sqdb, int targetID) {
         sqdb.delete("FilmographyTable","id = " + targetID, null);
     }
+
+    public void changeFilmByID(SQLiteDatabase sqdb, String targetID, String parameter) {
+        ContentValues values = new ContentValues();
+        values.put("film", parameter);
+        sqdb.update("FilmographyTable", values, "id="+targetID, null);
+    }
+
+    public void changeYearByID(SQLiteDatabase sqdb, String targetID, String parameter) {
+        ContentValues values = new ContentValues();
+        values.put("year", parameter);
+        sqdb.update("FilmographyTable", values, "id="+targetID, null);
+    }
+
+    public void changeRoleByID(SQLiteDatabase sqdb, String targetID, String parameter) {
+        ContentValues values = new ContentValues();
+        values.put("role", parameter);
+        sqdb.update("FilmographyTable", values, "id="+targetID, null);
+    }
+
+    public void changeDirectorByID(SQLiteDatabase sqdb, String targetID, String parameter) {
+        ContentValues values = new ContentValues();
+        values.put("director", parameter);
+        sqdb.update("FilmographyTable", values, "id="+targetID, null);
+    }
 }
 

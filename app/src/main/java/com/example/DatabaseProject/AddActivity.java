@@ -51,11 +51,15 @@ public class AddActivity extends AppCompatActivity {
                     params.get(2).equals("")||
                     params.get(3).equals("")) {
                 errorMsg.setTextColor(Color.RED);
-                errorMsg.setText("Missing one of the fields!");
+                errorMsg.setText("Missing some of the fields!");
             } else {
                 sqh.addNewRecord(sqdb, params);
                 errorMsg.setTextColor(Color.BLACK);
                 errorMsg.setText("Record successfully added!");
+                filmInput.setText("");
+                yearInput.setText("");
+                roleInput.setText("");
+                directorInput.setText("");
             }
         });
     }
