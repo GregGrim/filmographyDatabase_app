@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,11 +27,14 @@ public class StartActivity extends AppCompatActivity {
     private static String CHECK_DATABASES_FOLDER;
     private static final String LOG_TAG = "ACTOR_DB";
 
-    OpenDatabase sqh;
-    SQLiteDatabase sqdb;
+    public static OpenDatabase sqh;
+    public static SQLiteDatabase sqdb;
     Context ctx;
 
     Button searchButton;
+    Button addButton;
+    Button changeButton;
+    Button deleteButton;
     TextInputEditText inputText;
     TextView outputView;
     ScrollView scrollView;
@@ -59,6 +63,21 @@ public class StartActivity extends AppCompatActivity {
                     outputView.setText(sqh.recordsMatchingCodeword(sqdb, String.valueOf(inputText.getText())));
                 }
             }
+        });
+        addButton = findViewById(R.id.buttonAdd);
+        addButton.setOnClickListener(view -> {
+            Intent aboutIntent = new Intent(StartActivity.this, AddActivity.class);
+            startActivity(aboutIntent);
+        });
+        changeButton = findViewById(R.id.buttonChange);
+        changeButton.setOnClickListener(view -> {
+            Intent aboutIntent = new Intent(StartActivity.this, ChangeActivity.class);
+            startActivity(aboutIntent);
+        });
+        deleteButton = findViewById(R.id.buttonDelete);
+        deleteButton.setOnClickListener(view -> {
+            Intent aboutIntent = new Intent(StartActivity.this, DeleteActivity.class);
+            startActivity(aboutIntent);
         });
     }
     public void InitDataBase()

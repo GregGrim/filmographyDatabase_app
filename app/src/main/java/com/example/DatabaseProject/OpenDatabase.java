@@ -1,9 +1,12 @@
 package com.example.DatabaseProject;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.List;
 
 public class OpenDatabase extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "actor.db";
@@ -76,6 +79,16 @@ public class OpenDatabase extends SQLiteOpenHelper {
         }
         c.close();
         return result.toString();
+    }
+
+    public void addNewRecord(SQLiteDatabase sqdb, List<String> params) {
+        ContentValues values = new ContentValues();
+        values.put("film", params.get(0));
+        values.put("year", params.get(1));
+        values.put("role", params.get(2));
+        values.put("director", params.get(3));
+        // Insert the record into the database
+        sqdb.insert("FilmographyTable", null, values);
     }
 }
 
