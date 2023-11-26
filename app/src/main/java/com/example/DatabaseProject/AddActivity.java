@@ -15,7 +15,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class AddActivity extends AppCompatActivity {
     TextInputEditText filmInput;
@@ -55,6 +54,8 @@ public class AddActivity extends AppCompatActivity {
                 errorMsg.setText("Missing one of the fields!");
             } else {
                 sqh.addNewRecord(sqdb, params);
+                errorMsg.setTextColor(Color.BLACK);
+                errorMsg.setText("Record successfully added!");
             }
         });
     }

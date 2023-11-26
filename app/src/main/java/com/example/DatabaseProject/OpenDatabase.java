@@ -90,5 +90,17 @@ public class OpenDatabase extends SQLiteOpenHelper {
         // Insert the record into the database
         sqdb.insert("FilmographyTable", null, values);
     }
+    public boolean checkExistence(SQLiteDatabase sqdb, int targetID) {
+        Cursor c = sqdb.rawQuery("SELECT 1 FROM FilmographyTable WHERE id = " + targetID, null);
+        boolean recordExists = c != null && c.moveToFirst();
+
+        if (c != null) {
+            c.close();
+        }
+        return recordExists;
+    }
+    public void deleteRecordByID(SQLiteDatabase sqdb, int targetID) {
+        sqdb.delete("FilmographyTable","id = " + targetID, null);
+    }
 }
 
